@@ -10,6 +10,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -28,22 +30,9 @@ public class Recipe {
     private String name;
     private String description;
     private LocalDateTime createdOn;
-    @NotBlank(message = "ItemType is mandatory")
     private ItemType itemType;
     private Integer serving;
     private String cookingInstructions;
-    @NotBlank(message = "Ingredients are mandatory")
+    @NotEmpty(message = "Ingredients are mandatory")
     private List<Ingredient> ingredients;
-
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    public LocalDateTime getCreatedOn() {
-        return createdOn;
-    }
-
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
-    }
 }

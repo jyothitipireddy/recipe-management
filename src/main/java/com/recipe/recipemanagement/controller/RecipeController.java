@@ -5,6 +5,7 @@ import com.recipe.recipemanagement.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -52,7 +53,7 @@ public class RecipeController {
      * @param recipeModel - recipe details to be updated
      */
     @PutMapping("{recipeId}")
-    public void updateRecipe(@PathVariable Long recipeId, @RequestBody Recipe recipeModel) {
+    public void updateRecipe(@PathVariable Long recipeId, @Valid @RequestBody Recipe recipeModel) {
         recipeModel.setId(recipeId);
         recipeService.updateRecipe(recipeModel);
     }
@@ -64,7 +65,7 @@ public class RecipeController {
      * @return Recipe ID
      */
     @PostMapping
-    public Long addRecipe(@RequestBody Recipe recipeModel) {
+    public Long addRecipe(@Valid @RequestBody Recipe recipeModel) {
         return recipeService.addRecipe(recipeModel);
     }
 

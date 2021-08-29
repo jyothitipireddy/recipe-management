@@ -59,16 +59,6 @@ public class RecipeEntity {
         return Objects.hash(id, name, description, createdOn, itemType, serving, cookingInstructions, recipeIngredients);
     }
 
-//    @JsonSerialize(using = LocalDateTimeSerializer.class)
-//    public LocalDateTime getCreatedOn() {
-//        return createdOn;
-//    }
-//
-//    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-//    public void setCreatedOn(LocalDateTime createdOn) {
-//        this.createdOn = createdOn;
-//    }
-
     @PrePersist
     public void prePersist() {
         createdOn = LocalDateTime.now();

@@ -29,9 +29,10 @@ public class RecipeMapper {
     public void modelToEntity(Recipe recipe, RecipeEntity recipeEntity) {
 
         recipeEntity.setDescription(recipe.getDescription());
-        recipeEntity.setCookingInstructions(recipe.getDescription());
+        recipeEntity.setCookingInstructions(recipe.getCookingInstructions());
         recipeEntity.setItemType(recipe.getItemType().name());
         recipeEntity.setName(recipe.getName());
+        recipeEntity.setServing(recipe.getServing());
         var newIngredients = recipe.getIngredients();
         //Convert Ingredient model into IngredientEntity and RecipeIngredientEntity
         var list = newIngredients.stream().map(ingredientDto -> {
